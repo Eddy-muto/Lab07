@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JToggleButton;
+import javax.swing.JButton;
 
 public class pantalla extends JFrame {
 
@@ -37,6 +39,10 @@ public class pantalla extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(10, 11, 89, 23);
+		contentPane.add(btnNewButton);
 	}
-
 }
