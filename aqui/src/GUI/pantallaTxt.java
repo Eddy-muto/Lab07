@@ -31,7 +31,6 @@ public class pantallaTxt extends JFrame {
 	 */
 	document docu= new document();
 	static Main objetoMain = new Main();
-	String texto= docu.retornTexto();
 	Node root = new Node();
 	
 	public static void main(String[] args) {
@@ -92,6 +91,7 @@ public class pantallaTxt extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String busca= PalabraBuscar.getText();
 				String reemplaza = PalabraReemplazo.getText();
+				String texto=textoTalCual.getText();
 				String [] dictionary = new String[] {reemplaza};
 				
 				String resultadoString=objetoMain.replaceWords(dictionary, texto);

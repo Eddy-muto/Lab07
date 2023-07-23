@@ -42,9 +42,6 @@ public class pantalla extends JFrame {
 	private JTextField muestraResultado;
 	private JTextField resultadoTex;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,9 +55,7 @@ public class pantalla extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	 
 	public pantalla() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -137,8 +132,9 @@ public class pantalla extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
-		    
+				pantallaTxt abrir = new pantallaTxt();
+				abrir.setVisible(true);
+ 
 			}
 			
 		});
