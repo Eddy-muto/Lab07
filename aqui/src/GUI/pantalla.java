@@ -13,13 +13,18 @@ import Aeq3.Main.Node;
 
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import java.io.*;
 
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JTextArea;
@@ -129,6 +134,14 @@ public class pantalla extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnNewButton_2 = new JButton("Buscar Archivo");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+		    
+			}
+			
+		});
 		btnNewButton_2.setBounds(270, 188, 154, 23);
 		panel.add(btnNewButton_2);
 		
