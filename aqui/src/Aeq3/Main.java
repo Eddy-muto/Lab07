@@ -1,5 +1,6 @@
 package Aeq3;
 import java.io.*;
+import java.security.PublicKey;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -39,8 +40,9 @@ public class Main {
  
         // mark last node as leaf
         pCrawl.isEndOfWord = true;
+        
 	}
-	 static boolean search(Node root, String key)
+	 public static boolean search(Node root, String key)
 	    {
 	        Node pCrawl = root;
 	 
@@ -143,7 +145,7 @@ public class Main {
 	    }
 
 	  public static void main(String[] args) throws Exception {
-	    BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
+	   /* BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 
 	    int n = Integer.parseInt(read.readLine());
 
@@ -159,6 +161,7 @@ public class Main {
 
 	    String result = replaceWords(dictionary, sentence);
 	    System.out.println(result);
+	    */
 	    
 	    
 	    String keys[] = { "the", "a", "there",
@@ -202,6 +205,9 @@ public class Main {
 			System.out.println("Yes");
 		else
 			System.out.println("No");
+		
+		System.out.println("**************");
+		
 
 	}
 

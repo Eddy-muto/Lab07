@@ -2,23 +2,40 @@ package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.TextArea;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JToggleButton;
+
+import Aeq3.Main;
+import Aeq3.Main.Node;
+
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.JTextArea;
+import java.awt.Font;
 
 public class pantalla extends JFrame {
+	boolean respuesta;
+	String cadena="";
+	Main objetoMain = new Main();
+	Node root = new Node();
 
 	private JPanel contentPane;
 	private JTextField EspacioforInsert;
 	private JTextField espacioForSearch;
+	private JTextField muestraResultado;
+	private JTextField resultadoTex;
 
 	/**
 	 * Launch the application.
@@ -49,6 +66,17 @@ public class pantalla extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton BotonInsert = new JButton("insertar");
+		BotonInsert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String palabra =EspacioforInsert.getText() ;
+				
+				objetoMain.insertPalabra(root, palabra);
+				cadena= cadena + EspacioforInsert.getText()+",\n";
+				resultadoTex.setText(cadena);
+				EspacioforInsert.setText(null);
+				
+			}
+		});
 		BotonInsert.setBounds(335, 22, 89, 23);
 		contentPane.add(BotonInsert);
 		
@@ -71,17 +99,24 @@ public class pantalla extends JFrame {
 		espacioForSearch.setColumns(10);
 		
 		JButton BotonSearch = new JButton("Buscar");
+		BotonSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String palabra= espacioForSearch.getText();
+				boolean resp =objetoMain.search(root, palabra);
+				muestraResultado.setText(null);
+				
+				if(resp==true) {
+					muestraResultado.setText("true");
+				}else {
+					muestraResultado.setText("false");
+				}
+				espacioForSearch.setText(null);
+				
+			}
+			
+		});
 		BotonSearch.setBounds(335, 67, 89, 23);
 		contentPane.add(BotonSearch);
-		
-		JLabel resultadosImprime = new JLabel("");
-		resultadosImprime.setBackground(UIManager.getColor("Button.highlight"));
-		resultadosImprime.setBounds(10, 140, 231, 110);
-		contentPane.add(resultadosImprime);
-		
-		JButton btnNewButton_3 = new JButton("Mostrar Datos");
-		btnNewButton_3.setBounds(10, 111, 163, 23);
-		contentPane.add(btnNewButton_3);
 		
 		JLabel lblNewLabel_3 = new JLabel("InsertarArchivo");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -96,5 +131,28 @@ public class pantalla extends JFrame {
 		JButton btnNewButton_2 = new JButton("Buscar Archivo");
 		btnNewButton_2.setBounds(270, 188, 154, 23);
 		panel.add(btnNewButton_2);
+		
+		muestraResultado = new JTextField();
+		muestraResultado.setHorizontalAlignment(SwingConstants.CENTER);
+		muestraResultado.setForeground(new Color(0, 0, 0));
+		muestraResultado.setBackground(new Color(128, 0, 0));
+		muestraResultado.setEditable(false);
+		muestraResultado.setEnabled(false);
+		muestraResultado.setBounds(287, 67, 45, 23);
+		panel.add(muestraResultado);
+		muestraResultado.setColumns(10);
+		
+		resultadoTex = new JTextField();
+		resultadoTex.setHorizontalAlignment(SwingConstants.LEFT);
+		resultadoTex.setBackground(Color.BLACK);
+		resultadoTex.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		resultadoTex.setForeground(Color.BLACK);
+		resultadoTex.setEditable(false);
+		resultadoTex.setEnabled(false);
+		resultadoTex.setBounds(10, 102, 250, 137);
+		panel.add(resultadoTex);
+		resultadoTex.setColumns(1);
+		
+		System.out.println(objetoMain.toString());
 	}
 }
